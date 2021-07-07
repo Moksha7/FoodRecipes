@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">وصفات الطعام</string>
+    <string name="recipes_fragment">وصفات</string>
+    <string name="favourite_recipes_fragment">المفضلة</string>
+    <string name="food_joke_fragment">نكتة الغذاء</string>
+    <string name="meal_type">نوع الوجبة</string>
+    <string name="main_course">الطبق الرئيسي</string>
+    <string name="side_dish">جانب الطبق</string>
+    <string name="drink">يشرب</string>
+    <string name="snack">وجبة خفيفة</string>
+    <string name="fingerfood">اصبع الطعام</string>
+    <string name="marinade">نقيع</string>
+    <string name="sauce">صلصة</string>
+    <string name="beverage">مشروب</string>
+    <string name="soup">حساء</string>
+    <string name="breakfast">وجبة افطار</string>
+    <string name="bread">خبز</string>
+    <string name="salad">سلطة</string>
+    <string name="appetizer">مقبلات</string>
+    <string name="dessert">الحلوى</string>
+    <string name="diet_type">نوع النظام الغذائي</string>
+    <string name="gluten_free">خالي من الغلوتين</string>
+    <string name="ketogenic">الكيتون</string>
+    <string name="pescetarian">بيسيتاريان</string>
+    <string name="paleo">باليو</string>
+    <string name="whole_30">كامل 30</string>
+    <string name="primal">البدائي</string>
+    <string name="apply">تطبيق</string>
+    <string name="search">يبحث</string>
+    <string name="cheap">رخيص</string>
+    <string name="healthy">صحي</string>
+    <string name="dairy_free">خالٍ من منتجات الألبان</string>
+    <string name="vegan">نباتي</string>
+    <string name="vegetarian">نباتي</string>
+    <string name="save_to_favourites">حفظ في المفضلة</string>
+    <string name="no_favourite_recipes">لا توجد وصفات مفضلة</string>
+    <string name="delete_favourite_menu">حذف قائمة المفضلة</string>
+    <string name="delete_all">حذف الكل</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet، consectetur adipiscing elit، sed do eiusmod tempor incidunt ut labore et dolore magna aliqua.</string>
+    <string name="share">يشارك</string>
+    <string name="unitTitle">اختار اللغة</string>
+
+    <string name="overview">تفتيش</string>
+    <string name="ingredients">مكونات</string>
+    <string name="instruction">تعليمات</string>
+    <string name="details">تفاصيل</string>
+</resources>

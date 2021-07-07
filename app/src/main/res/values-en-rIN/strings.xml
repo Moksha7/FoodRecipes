@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Food Recipes</string>
     <string name="recipes_fragment">Recipes</string>
@@ -45,12 +46,4 @@
     <string name="ingredients">Ingredients</string>
     <string name="instruction">Instructions</string>
     <string name="details">Details</string>
-
-
-    <string-array name="entries">
-        <item>English</item>
-        <item>عربى</item>
-        <item>ગુજરાતી</item>
-        <item>हिंदी</item>
-    </string-array>
 </resources>

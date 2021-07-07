@@ -1,16 +1,17 @@
 package com.example.mvvmfoodreceipes.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayoutMediator
+import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate
 import com.example.mvvmfoodreceipes.R
 import com.example.mvvmfoodreceipes.adapters.PagerAdapter
 import com.example.mvvmfoodreceipes.data.database.entities.FavouritesEntity
@@ -20,8 +21,10 @@ import com.example.mvvmfoodreceipes.ui.fragments.instructions.InstructionsFragme
 import com.example.mvvmfoodreceipes.ui.fragments.overview.OverviewFragment
 import com.example.mvvmfoodreceipes.utils.Constants.RECIPE_RESULT_KEY
 import com.example.mvvmfoodreceipes.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Exception
+
 
 @AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
@@ -33,13 +36,16 @@ class DetailsActivity : AppCompatActivity() {
 
     private var recipeSaved = false
     private var savedRecipeId = 0
+    private val localizationDelegate = LocalizationActivityDelegate(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        localizationDelegate.onCreate()
+        loadLocale()
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
+
         binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -49,9 +55,9 @@ class DetailsActivity : AppCompatActivity() {
         fragments.add(InstructionsFragment())
 
         val titles = ArrayList<String>()
-        titles.add("Overview")
-        titles.add("Ingredients")
-        titles.add("Instructions")
+        titles.add(getString(R.string.overview))
+        titles.add(getString(R.string.ingredients))
+        titles.add(getString(R.string.instruction))
 
         val resultBundle = Bundle()
         resultBundle.putParcelable(RECIPE_RESULT_KEY, args.result)
@@ -69,6 +75,33 @@ class DetailsActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             tab.text = titles[position]
         }.attach()
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        localizationDelegate.onResume(this)
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        applyOverrideConfiguration(localizationDelegate.updateConfigurationLocale(newBase))
+        super.attachBaseContext(newBase)
+    }
+
+    override fun getApplicationContext(): Context {
+        return localizationDelegate.getApplicationContext(super.getApplicationContext())
+    }
+
+    override fun getResources(): Resources {
+        return localizationDelegate.getResources(super.getResources())
+    }
+
+
+    fun loadLocale() {
+        val langPref = "Language"
+        val prefs = getSharedPreferences("CommonPrefs",
+            MODE_PRIVATE)
+        val language = prefs.getString(langPref, "")
+        setLanguage(language)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -138,12 +171,17 @@ class DetailsActivity : AppCompatActivity() {
             message,
             Snackbar.LENGTH_SHORT
         )
-            .setAction("Ok"){}
+            .setAction("Ok") {}
             .show()
+    }
+
+    fun setLanguage(language: String?) {
+        localizationDelegate.setLanguage(this, language!!)
     }
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {
         item.icon.setTint(ContextCompat.getColor(this, color))
     }
+
 
 }

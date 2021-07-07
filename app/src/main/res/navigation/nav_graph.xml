@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.example.mvvmfoodreceipes.ui.fragments.recipes.RecipesFragment"
-        android:label="Recipes"
+        android:label="@string/recipes_fragment"
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/favouriteRecipesFragment"
         android:name="com.example.mvvmfoodreceipes.ui.fragments.favourites.FavouriteRecipesFragment"
-        android:label="Favourites"
+        android:label="@string/favourite_recipes_fragment"
         tools:layout="@layout/fragment_favourite_recipes" >
         <action
             android:id="@+id/action_favouriteRecipesFragment_to_detailsActivity"
@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/foodJokeFragment"
         android:name="com.example.mvvmfoodreceipes.ui.fragments.foodjoke.FoodJokeFragment"
-        android:label="Food Joke"
+        android:label="@string/food_joke_fragment"
         tools:layout="@layout/fragment_food_joke" />
     <dialog
         android:id="@+id/recipesBottomSheet"
@@ -49,7 +49,6 @@
     <activity
         android:id="@+id/detailsActivity"
         android:name="com.example.mvvmfoodreceipes.ui.DetailsActivity"
-        android:label="Details"
         tools:layout="@layout/activity_details" >
         <argument
             android:name="result"

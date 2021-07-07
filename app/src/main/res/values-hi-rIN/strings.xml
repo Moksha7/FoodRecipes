@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">खाद्य व्यंजनों</string>
+    <string name="recipes_fragment">व्यंजनों</string>
+    <string name="favourite_recipes_fragment">पसंदीदा</string>
+    <string name="food_joke_fragment">भोजन मजाक</string>
+    <string name="meal_type">भोजन का प्रकार</string>
+    <string name="main_course">मेन कोर्स</string>
+    <string name="side_dish">साइड डिश</string>
+    <string name="drink">पेय</string>
+    <string name="snack">नाश्ता</string>
+    <string name="fingerfood">उंगली से भोजन</string>
+    <string name="marinade">एक प्रकार का अचार</string>
+    <string name="sauce">चटनी</string>
+    <string name="beverage">पेय पदार्थ</string>
+    <string name="soup">सूप</string>
+    <string name="breakfast">सुबह का नाश्ता</string>
+    <string name="bread">ब्रेड</string>
+    <string name="salad">सलाद</string>
+    <string name="appetizer">क्षुधावर्धक</string>
+    <string name="dessert">मिठाई</string>
+    <string name="diet_type">आहार प्रकार</string>
+    <string name="gluten_free">ग्लूटेन मुक्त</string>
+    <string name="ketogenic">कीटजनक</string>
+    <string name="pescetarian">पेसेटेरियन</string>
+    <string name="paleo">पैलियो</string>
+    <string name="whole_30">पूरे 30</string>
+    <string name="primal">मौलिक</string>
+    <string name="apply">लागू</string>
+    <string name="search">खोज</string>
+    <string name="cheap">सस्ता</string>
+    <string name="healthy">स्वस्थ</string>
+    <string name="dairy_free">डेयरी मुक्त</string>
+    <string name="vegan">शाकाहारी</string>
+    <string name="vegetarian">शाकाहारी</string>
+    <string name="save_to_favourites">पसंदीदा में सहेजें</string>
+    <string name="no_favourite_recipes">कोई पसंदीदा व्यंजन नहीं</string>
+    <string name="delete_favourite_menu">पसंदीदा मेनू हटाएं</string>
+    <string name="delete_all">सभी हटा दो</string>
+    <string name="lorem_ipsum">लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पोर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका।</string>
+    <string name="share">शेयर</string>
+    <string name="unitTitle">भाषा का चयन करें</string>
+    <string name="ingredients">सामग्री</string>
+    <string name="instruction">अनुदेश</string>
+    <string name="overview">निरीक्षण</string>
+    <string name="details">विवरण</string>
+</resources>

@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.example.mvvmfoodreceipes.R
 import com.example.mvvmfoodreceipes.adapters.FavouriteRecipesAdapter
 import com.example.mvvmfoodreceipes.databinding.FragmentFavouriteRecipesBinding
 import com.example.mvvmfoodreceipes.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,7 +35,6 @@ class FavouriteRecipesFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
         binding.mAdapter = mAdapter
-
         setHasOptionsMenu(true)
         setUpRecyclerView(binding.favouriteRecipesRecyclerView)
 

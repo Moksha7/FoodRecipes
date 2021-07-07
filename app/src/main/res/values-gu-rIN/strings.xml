@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ફૂડ રેસિપિ</string>
+    <string name="recipes_fragment">વાનગીઓ</string>
+    <string name="favourite_recipes_fragment">મનપસંદ</string>
+    <string name="food_joke_fragment">ફૂડ જોક</string>
+    <string name="meal_type">ભોજનનો પ્રકાર</string>
+    <string name="main_course">મુખ્ય કોર્સ</string>
+    <string name="side_dish">સાઇડ ડિશ</string>
+    <string name="drink">પીણું</string>
+    <string name="snack">નાસ્તો</string>
+    <string name="fingerfood">ફિંગરફૂડ</string>
+    <string name="marinade">મરીનાડે</string>
+    <string name="sauce">ચટણી</string>
+    <string name="beverage">પીણું</string>
+    <string name="soup">સૂપ</string>
+    <string name="breakfast">સવારનો નાસ્તો</string>
+    <string name="bread">બ્રેડ</string>
+    <string name="salad">સલાડ</string>
+    <string name="appetizer">ભૂખ</string>
+    <string name="dessert">મીઠાઈ</string>
+    <string name="diet_type">આહાર પ્રકાર</string>
+    <string name="gluten_free">ધાન્યના લોટમાં રહેલું નત્રિલ દ્રવ્ય મુક્ત</string>
+    <string name="ketogenic">કેટોજેનિક</string>
+    <string name="pescetarian">પેસેટેરિયન</string>
+    <string name="paleo">પેલેઓ</string>
+    <string name="share">શેર કરો</string>
+    <string name="whole_30">સંપૂર્ણ 30</string>
+    <string name="primal">આદિકાળ</string>
+    <string name="apply">લાગુ કરો</string>
+    <string name="search">શોધો</string>
+    <string name="cheap">સસ્તુ</string>
+    <string name="healthy">સ્વસ્થ</string>
+    <string name="dairy_free">ડેરી ફ્રી</string>
+    <string name="vegan">વેગન</string>
+    <string name="vegetarian">શાકાહારી</string>
+    <string name="save_to_favourites">મનપસંદમાં સાચવો</string>
+    <string name="no_favourite_recipes">કોઈ પ્રિય વાનગીઓ નથી</string>
+    <string name="delete_favourite_menu">મનપસંદ મેનુ કાઢી નાખો</string>
+    <string name="delete_all">બધું કાઢી નાંખો</string>
+    <string name="lorem_ipsum">તમે કામ કરી શકો છો, આશ્રય માટે યોગ્ય છે, પરંતુ કામદાર અને મેગા મેગા જેવા કામ કરે છે.</string>
+    <string name="unitTitle">ભાષા પસંદ કરો</string>
+    <string name="overview">નિરીક્ષણ</string>
+    <string name="ingredients">ઘટકો</string>
+    <string name="instruction">સૂચનાઓ</string>
+    <string name="details">વિગતો</string>
+</resources>

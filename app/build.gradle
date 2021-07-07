@@ -19,6 +19,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -112,5 +118,9 @@ dependencies {
 
     // Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'
+
+    implementation 'com.akexorcist:localization:1.2.10'
+
+
 
 }
