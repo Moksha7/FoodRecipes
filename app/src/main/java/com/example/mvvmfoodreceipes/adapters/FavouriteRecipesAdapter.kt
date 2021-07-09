@@ -1,18 +1,24 @@
 package com.example.mvvmfoodreceipes.adapters
 
+import android.content.res.Resources
+import android.os.StrictMode
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.example.mvvmfoodreceipes.R
 import com.example.mvvmfoodreceipes.data.database.entities.FavouritesEntity
 import com.example.mvvmfoodreceipes.databinding.FavouriteRecipesRowLayoutBinding
 import com.example.mvvmfoodreceipes.ui.fragments.favourites.FavouriteRecipesFragmentDirections
 import com.example.mvvmfoodreceipes.utils.RecipesDiffUtil
 import com.example.mvvmfoodreceipes.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
+import com.google.auth.oauth2.GoogleCredentials
+import com.google.cloud.translate.Translate
+import com.google.cloud.translate.TranslateOptions
+import java.io.IOException
 
 class FavouriteRecipesAdapter(
     private val requireActivity: FragmentActivity,
@@ -25,8 +31,13 @@ class FavouriteRecipesAdapter(
     private var myViewHolders = arrayListOf<FavouriteRecipesViewHolder>()
     private lateinit var mActionMode: ActionMode
     private lateinit var rootView: View
+    private lateinit var holder: FavouriteRecipesAdapter.FavouriteRecipesViewHolder
+    private var translate: Translate? = null
+    private var language: String = "en"
 
-    class FavouriteRecipesViewHolder(val binding: FavouriteRecipesRowLayoutBinding): RecyclerView.ViewHolder(binding.root) {
+
+    class FavouriteRecipesViewHolder(val binding: FavouriteRecipesRowLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(favouritesEntity: FavouritesEntity) {
             binding.favouritesEntity = favouritesEntity
@@ -48,7 +59,8 @@ class FavouriteRecipesAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteRecipesViewHolder {
-        return FavouriteRecipesViewHolder.from(parent)
+        holder = FavouriteRecipesViewHolder.from(parent)
+        return holder
     }
 
     override fun onBindViewHolder(holder: FavouriteRecipesViewHolder, position: Int) {
@@ -57,6 +69,7 @@ class FavouriteRecipesAdapter(
 
         val currentRecipe = favouritesEntitiesList[position]
         holder.bind(currentRecipe)
+        translate(language)
 
         // Single click listener
         holder.binding.favouriteRecipeRowLayout.setOnClickListener {
@@ -94,9 +107,71 @@ class FavouriteRecipesAdapter(
         }
     }
 
-    private fun changeRecipeStyle(holder: FavouriteRecipesViewHolder, backgroundColor: Int, strokeColor: Int) {
-        holder.binding.favouriteRecipeRowLayout.setBackgroundColor(ContextCompat.getColor(requireActivity, backgroundColor))
-        holder.binding.favouriteRowCardView.strokeColor = ContextCompat.getColor(requireActivity, strokeColor)
+    fun getTranslateService(resources: Resources, lang: String) {
+
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+
+        try {
+            resources.openRawResource(R.raw.credentials).use { `is` ->
+                val myCredentials = GoogleCredentials.fromStream(`is`)
+                val translateOptions =
+                    TranslateOptions.newBuilder().setCredentials(myCredentials).build()
+                translate = translateOptions.service
+            }
+        } catch (ioe: IOException) {
+            ioe.printStackTrace()
+        }
+
+        language = lang
+    }
+
+    fun translate(lang: String) {
+
+        val originalTitle: String = holder.binding.favouriteTitleTextView.text.toString()
+        val originalDescription: String =
+            holder.binding.favouriteDescriptionTextView.text.toString()
+        val originalHeart: String = holder.binding.favouriteHeartTextView.text.toString()
+        val originalClock: String = holder.binding.favouriteClockTextView.text.toString()
+        val originalLeaf: String = holder.binding.favouriteLeafTextView.text.toString()
+
+
+        //Get input text to be translated:
+        val translationTitle = translate!!.translate(originalTitle,
+            Translate.TranslateOption.targetLanguage(lang),
+            Translate.TranslateOption.model("base"))
+        val translationDescription = translate!!.translate(originalDescription,
+            Translate.TranslateOption.targetLanguage(lang),
+            Translate.TranslateOption.model("base"))
+        val translationHeart = translate!!.translate(originalHeart,
+            Translate.TranslateOption.targetLanguage(lang),
+            Translate.TranslateOption.model("base"))
+        val translationClock = translate!!.translate(originalClock,
+            Translate.TranslateOption.targetLanguage(lang),
+            Translate.TranslateOption.model("base"))
+        val translationLeaf = translate!!.translate(originalLeaf,
+            Translate.TranslateOption.targetLanguage(lang),
+            Translate.TranslateOption.model("base"))
+        //Translated text and original text are set to TextViews:
+
+        holder.binding.favouriteTitleTextView.text = translationTitle.translatedText
+        holder.binding.favouriteDescriptionTextView.text = translationDescription.translatedText
+        holder.binding.favouriteHeartTextView.text = translationHeart.translatedText
+        holder.binding.favouriteClockTextView.text = translationClock.translatedText
+        holder.binding.favouriteLeafTextView.text = translationLeaf.translatedText
+
+    }
+
+    private fun changeRecipeStyle(
+        holder: FavouriteRecipesViewHolder,
+        backgroundColor: Int,
+        strokeColor: Int,
+    ) {
+        holder.binding.favouriteRecipeRowLayout.setBackgroundColor(ContextCompat.getColor(
+            requireActivity,
+            backgroundColor))
+        holder.binding.favouriteRowCardView.strokeColor =
+            ContextCompat.getColor(requireActivity, strokeColor)
     }
 
     private fun applyActionModeTitle() {

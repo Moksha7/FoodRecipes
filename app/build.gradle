@@ -8,7 +8,6 @@ apply plugin: 'kotlin-parcelize'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-
     defaultConfig {
         applicationId "com.example.mvvmfoodreceipes"
         minSdkVersion 26
@@ -32,6 +31,8 @@ android {
         }
     }
 
+
+
     buildFeatures {
         dataBinding true
         viewBinding true
@@ -44,6 +45,20 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        exclude 'project.properties'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/INDEX.LIST'
+        exclude("META-INF/*.kotlin_module")
     }
 
 }
@@ -120,6 +135,12 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.13.1'
 
     implementation 'com.akexorcist:localization:1.2.10'
+
+    implementation('com.google.cloud:google-cloud-translate:1.12.0') {
+        exclude group: 'org.apache.httpcomponents'
+        exclude group: 'org.json', module: 'json'
+    }
+    annotationProcessor 'com.google.cloud:google-cloud-translate:1.12.0'
 
 
 

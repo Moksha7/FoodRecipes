@@ -49,7 +49,8 @@
     <activity
         android:id="@+id/detailsActivity"
         android:name="com.example.mvvmfoodreceipes.ui.DetailsActivity"
-        tools:layout="@layout/activity_details" >
+        android:label="@string/details"
+        tools:layout="@layout/activity_details">
         <argument
             android:name="result"
             app:argType="com.example.mvvmfoodreceipes.models.Result" />

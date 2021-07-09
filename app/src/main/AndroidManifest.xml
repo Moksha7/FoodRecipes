@@ -9,15 +9,15 @@
         android:name="com.example.mvvmfoodreceipes.MyApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/SplashScreenStyle"
         android:usesCleartextTraffic="true">
         <activity
             android:name="com.example.mvvmfoodreceipes.ui.DetailsActivity"
-            android:label="Details"
+            android:label="@string/details"
             android:screenOrientation="portrait"
             android:theme="@style/DetailsActivityStyle" />
         <activity

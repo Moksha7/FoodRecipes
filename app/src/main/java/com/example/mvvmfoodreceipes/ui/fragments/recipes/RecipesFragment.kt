@@ -3,21 +3,22 @@ package com.example.mvvmfoodreceipes.ui.fragments.recipes
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mvvmfoodreceipes.viewmodels.MainViewModel
 import com.example.mvvmfoodreceipes.R
 import com.example.mvvmfoodreceipes.adapters.RecipesAdapter
 import com.example.mvvmfoodreceipes.databinding.FragmentRecipesBinding
 import com.example.mvvmfoodreceipes.utils.NetworkListener
 import com.example.mvvmfoodreceipes.utils.NetworkResult
 import com.example.mvvmfoodreceipes.utils.observeOnce
+import com.example.mvvmfoodreceipes.viewmodels.MainViewModel
 import com.example.mvvmfoodreceipes.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,7 +28,7 @@ import kotlinx.coroutines.launch
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
-
+    private var language: String = "en"
     private val args by navArgs<RecipesFragmentArgs>()
 
     private var _binding : FragmentRecipesBinding? = null
@@ -49,6 +50,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        loadLocale()
         // Inflate the layout for this fragment
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -57,6 +59,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         setHasOptionsMenu(true)
 
         setupRecyclerView()
+
+        mAdapter.getTranslateService(resources, language)
 
         recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
             recipesViewModel.backOnline = it
@@ -88,6 +92,14 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.recyclerView.adapter = mAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
+    }
+
+    fun loadLocale() {
+        val langPref = "Language"
+        val prefs = context?.getSharedPreferences("CommonPrefs",
+            AppCompatActivity.MODE_PRIVATE)
+        language = prefs?.getString(langPref, "").toString()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -193,4 +205,6 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onDestroyView()
         _binding = null // to avoid memory leaks
     }
+
+
 }

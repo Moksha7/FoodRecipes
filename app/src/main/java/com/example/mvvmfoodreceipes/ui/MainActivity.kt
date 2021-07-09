@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), OnLocaleChangedListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setTheme(R.style.AppTheme)
         setContentView(binding.root)
-        currentLanguage
+
         navController = findNavController(R.id.navHostFragment)
         val appBarConfig = AppBarConfiguration(
             setOf(

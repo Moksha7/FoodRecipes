@@ -2,6 +2,7 @@ package com.example.mvvmfoodreceipes.ui.fragments.favourites
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavouriteRecipesFragment : Fragment() {
 
+    private var language: String = "en"
     private val mainViewModel: MainViewModel by viewModels()
     private val mAdapter: FavouriteRecipesAdapter by lazy { FavouriteRecipesAdapter(requireActivity(), mainViewModel) }
 
@@ -27,6 +29,7 @@ class FavouriteRecipesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        loadLocale()
         _binding = FragmentFavouriteRecipesBinding.inflate(
             inflater,
             container,
@@ -37,7 +40,7 @@ class FavouriteRecipesFragment : Fragment() {
         binding.mAdapter = mAdapter
         setHasOptionsMenu(true)
         setUpRecyclerView(binding.favouriteRecipesRecyclerView)
-
+        mAdapter.getTranslateService(resources, language)
         return binding.root
     }
 
@@ -56,6 +59,14 @@ class FavouriteRecipesFragment : Fragment() {
         )
             .setAction("Ok") {}
             .show()
+    }
+
+    fun loadLocale() {
+        val langPref = "Language"
+        val prefs = context?.getSharedPreferences("CommonPrefs",
+            AppCompatActivity.MODE_PRIVATE)
+        language = prefs?.getString(langPref, "").toString()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
