@@ -42,7 +42,7 @@ constructor(
             dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
         }
 
-    fun saveBackOnline(backOnline: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+    private fun saveBackOnline(backOnline: Boolean) = viewModelScope.launch(Dispatchers.IO) {
         dataStoreRepository.saveBackOnline(backOnline)
     }
 

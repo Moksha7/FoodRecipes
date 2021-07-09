@@ -96,7 +96,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
 
-    fun loadLocale() {
+    private fun loadLocale() {
         val langPref = "Language"
         val prefs = getSharedPreferences("CommonPrefs",
             MODE_PRIVATE)
@@ -175,7 +175,7 @@ class DetailsActivity : AppCompatActivity() {
             .show()
     }
 
-    fun setLanguage(language: String?) {
+    private fun setLanguage(language: String?) {
         localizationDelegate.setLanguage(this, language!!)
     }
 

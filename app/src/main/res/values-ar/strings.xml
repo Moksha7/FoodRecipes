@@ -46,4 +46,6 @@
     <string name="instruction">تعليمات</string>
     <string name="details">تفاصيل</string>
     <string name="languages">لغة</string>
+    <string name="todo">TODO</string>
+    <string name="error">Error</string>
 </resources>

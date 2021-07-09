@@ -18,7 +18,7 @@ import java.io.IOException
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
 
-    private lateinit var holder: RecipesAdapter.RecipesViewHolder
+    private lateinit var holder: RecipesViewHolder
     private var translate: Translate? = null
     private var language: String = "en"
 

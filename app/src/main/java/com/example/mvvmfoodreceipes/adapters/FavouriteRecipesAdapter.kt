@@ -31,7 +31,7 @@ class FavouriteRecipesAdapter(
     private var myViewHolders = arrayListOf<FavouriteRecipesViewHolder>()
     private lateinit var mActionMode: ActionMode
     private lateinit var rootView: View
-    private lateinit var holder: FavouriteRecipesAdapter.FavouriteRecipesViewHolder
+    private lateinit var holder: FavouriteRecipesViewHolder
     private var translate: Translate? = null
     private var language: String = "en"
 

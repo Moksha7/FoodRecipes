@@ -86,6 +86,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/todo"
             app:layout_constraintVertical_bias="0.37" />
 
         <TextView
@@ -96,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0.5"
-            android:text="Error"
+            android:text="@string/error"
             android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="invisible"

@@ -61,7 +61,7 @@ class FavouriteRecipesFragment : Fragment() {
             .show()
     }
 
-    fun loadLocale() {
+    private fun loadLocale() {
         val langPref = "Language"
         val prefs = context?.getSharedPreferences("CommonPrefs",
             AppCompatActivity.MODE_PRIVATE)

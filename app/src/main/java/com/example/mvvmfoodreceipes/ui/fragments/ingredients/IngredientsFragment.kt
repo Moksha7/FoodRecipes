@@ -19,10 +19,6 @@ class IngredientsFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +46,7 @@ class IngredientsFragment : Fragment() {
 
     }
 
-    fun loadLocale() {
+    private fun loadLocale() {
         val langPref = "Language"
         val prefs = context?.getSharedPreferences("CommonPrefs",
             AppCompatActivity.MODE_PRIVATE)

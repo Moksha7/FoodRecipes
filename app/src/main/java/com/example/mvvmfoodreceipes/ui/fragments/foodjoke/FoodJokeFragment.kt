@@ -108,7 +108,7 @@ class FoodJokeFragment : Fragment(R.layout.fragment_food_joke) {
     }
 
 
-    fun loadLocale() {
+    private fun loadLocale() {
         val langPref = "Language"
         val prefs = context?.getSharedPreferences("CommonPrefs",
             AppCompatActivity.MODE_PRIVATE)

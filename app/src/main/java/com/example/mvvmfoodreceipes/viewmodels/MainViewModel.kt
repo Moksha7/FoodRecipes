@@ -16,7 +16,6 @@ import com.example.mvvmfoodreceipes.utils.NetworkResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.lang.Exception
 
 class MainViewModel
 @ViewModelInject
@@ -40,7 +39,7 @@ constructor(
             repository.local.insertFavouriteRecipes(favouritesEntity)
         }
     
-    fun insertFoodJoke(foodJokeEntity: FoodJokeEntity) =
+    private fun insertFoodJoke(foodJokeEntity: FoodJokeEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.insertFoodJoke(foodJokeEntity)
         }
@@ -136,7 +135,7 @@ constructor(
         insertFoodJoke(foodJokeEntity)
     }
 
-    private fun handleFoodRecipesResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe>? {
+    private fun handleFoodRecipesResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe> {
         when {
             response.message().toString().contains("timeout") -> {
                 return NetworkResult.Error("Timeout.")

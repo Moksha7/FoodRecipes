@@ -45,4 +45,6 @@
     <string name="overview">निरीक्षण</string>
     <string name="details">विवरण</string>
     <string name="languages">भाषा</string>
+    <string name="todo">TODO</string>
+    <string name="error">Error</string>
 </resources>

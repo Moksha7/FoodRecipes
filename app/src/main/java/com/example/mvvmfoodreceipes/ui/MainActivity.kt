@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), OnLocaleChangedListener {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
-    val currentLanguage: Locale
+    private val currentLanguage: Locale
         get() = localizationDelegate.getLanguage(this)
 
     private val localizationDelegate = LocalizationActivityDelegate(this)
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), OnLocaleChangedListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
+        when (item.itemId) {
             R.id.menu_language -> {
                 // Do Activity menu item stuff here
                 languageDialog()
@@ -122,18 +122,19 @@ class MainActivity : AppCompatActivity(), OnLocaleChangedListener {
                 position: Int,
                 id: Long,
             ) {
-                if (position == 0) {
-                    setLanguage("en")
-                    //saveLocale("en")
-                } else if (position == 1) {
-                    setLanguage("ar")
-                    //saveLocale("ar")
-                } else if (position == 2) {
-                    setLanguage("gu")
-                    //saveLocale("gu")
-                } else if (position == 3) {
-                    setLanguage("hi")
-                    //saveLocale("hi")
+                when (position) {
+                    0 -> {
+                        setLanguage("en")
+                    }
+                    1 -> {
+                        setLanguage("ar")
+                    }
+                    2 -> {
+                        setLanguage("gu")
+                    }
+                    3 -> {
+                        setLanguage("hi")
+                    }
                 }
             }
 
@@ -144,13 +145,13 @@ class MainActivity : AppCompatActivity(), OnLocaleChangedListener {
         alertDialog.show()
     }
 
-    fun saveLocale(lang: String?) {
+    private fun saveLocale(lang: String?) {
         val langPref = "Language"
         val prefs = getSharedPreferences("CommonPrefs",
             MODE_PRIVATE)
         val editor = prefs.edit()
         editor.putString(langPref, lang)
-        editor.commit()
+        editor.apply()
     }
 
 

@@ -51,7 +51,7 @@ class IngredientsAdapter: RecyclerView.Adapter<IngredientsAdapter.IngredientsVie
             }
             ingredientName.text = ingredientsList[position].name.capitalize(Locale.ROOT)
             ingredientAmount.text = ingredientsList[position].amount.toString()
-            ingredientUnit.text = ingredientsList[position].unit.toString()
+            ingredientUnit.text = ingredientsList[position].unit
             ingredientConsistency.text = ingredientsList[position].consistency
             ingredientOriginal.text = ingredientsList[position].original
         }
